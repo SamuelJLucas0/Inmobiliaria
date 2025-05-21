@@ -18,9 +18,9 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // Sirve los archivos estáticos (HTML, CSS, JS, imágenes, etc.)
 app.use(express.static(path.join(__dirname, 'interfaz')));
 
-// Si acceden a la raíz '/', envía index.html
+// Sirve index.html desde la raíz del proyecto
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'interfaz', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.use("/usuarios", usuarios);
