@@ -14,15 +14,15 @@ app.use(cors);
 app.use(morgan('dev'));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use('/interfaz', express.static(path.join(__dirname, 'interfaz'))); // Servir archivos estáticos de la carpeta interfaz
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.use("/usuarios", usuarios);
+
 app.use(auth);
-
-
 app.listen(PORT, () => {
     console.log('Server is running on PORT');
 });
