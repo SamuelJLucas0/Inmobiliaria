@@ -30,7 +30,7 @@ function registro() {
     
     axios({
         method: 'post',
-        url: 'http://localhost:3000/usuarios/signin',
+        url: 'inmobiliaria-production-9f86.up.railway.app/usuarios/signin',
         data: {
             Nombre: name,
             Correo: mail,
@@ -60,7 +60,7 @@ function login(){
 
     axios({
         method: 'post',
-        url: 'http://localhost:3000/usuarios/login',
+        url: 'inmobiliaria-production-9f86.up.railway.app/usuarios/login',
         data: {
             Correo: mail,
             Contraseña: pass

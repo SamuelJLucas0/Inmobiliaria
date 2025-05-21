@@ -75,7 +75,7 @@ function Subir(event) {
 
     const token = localStorage.getItem("token");
 
-    axios.post("http://localhost:3000/usuarios/verificar", formData, {
+    axios.post("inmobiliaria-production-9f86.up.railway.app/usuarios/verificar", formData, {
         headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",

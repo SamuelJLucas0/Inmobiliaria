@@ -54,7 +54,7 @@ function cargarDatos(){
     const contenedor = document.querySelector('.resultados');
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:3000/usuarios/getpublicaciones/${datos.id_user}`, {
+    fetch(`inmobiliaria-production-9f86.up.railway.app/usuarios/getpublicaciones/${datos.id_user}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -108,7 +108,7 @@ function cargarDatos(){
             eliminarBtn.addEventListener('click', () => {
                 const confirmacion = confirm("¿Estás seguro de que deseas eliminar esta publicación?");
                 if (confirmacion) {
-                    fetch(`http://localhost:3000/usuarios/eliminar/${publi.id_publicacion}`, {
+                    fetch(`inmobiliaria-production-9f86.up.railway.app/usuarios/eliminar/${publi.id_publicacion}`, {
                         method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${token}`

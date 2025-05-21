@@ -106,7 +106,7 @@ function Subir(){
 
     const token = localStorage.getItem("token");
 
-    axios.post('http://localhost:3000/usuarios/subirpubli', formData, {
+    axios.post('inmobiliaria-production-9f86.up.railway.app/usuarios/subirpubli', formData, {
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'

@@ -146,7 +146,7 @@ function actualizarPuntos() {
 
 function ObtenerDatosSeller(id, callback) {
     const token = localStorage.getItem('token');
-    axios.get(`http://localhost:3000/usuarios/obtenerdatos/${id}`, {
+    axios.get(`inmobiliaria-production-9f86.up.railway.app/usuarios/obtenerdatos/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }

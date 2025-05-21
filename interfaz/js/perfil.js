@@ -56,7 +56,7 @@ function cargarDatos(){
     const contenedor = document.querySelector('.resultados2');
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:3000/usuarios/getpublicaciones/${Vendedor.id_user}`, {
+    fetch(`inmobiliaria-production-9f86.up.railway.app/usuarios/getpublicaciones/${Vendedor.id_user}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`

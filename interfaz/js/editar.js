@@ -33,7 +33,7 @@ actualizar.addEventListener("click", async (e) => {
     };
 
     try {
-        const response = await fetch(`http://localhost:3000/usuarios/actualizar/${data.id_publicacion}`, {
+        const response = await fetch(`inmobiliaria-production-9f86.up.railway.app/usuarios/actualizar/${data.id_publicacion}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

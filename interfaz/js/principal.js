@@ -199,7 +199,7 @@ function verificarEstado() {
 function ObtenerDatos() {
     const token = localStorage.getItem("token");
 
-    return fetch('http://localhost:3000/usuarios/getuser', {
+    return fetch('inmobiliaria-production-9f86.up.railway.app/usuarios/getuser', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -238,7 +238,7 @@ function ObtenerDatos() {
 function cargarPublicaciones() {
     const token = localStorage.getItem("token");
 
-    return fetch('http://localhost:3000/usuarios/getpublicaciones', {
+    return fetch('inmobiliaria-production-9f86.up.railway.app/usuarios/getpublicaciones', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
