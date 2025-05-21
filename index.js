@@ -3,6 +3,8 @@ const {PORT} = require('./config.js');
 
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');  // Importa path
+
 const app = express();
 const usuarios = require('./routes/usuarios');
 const auth = require('./middleware/auth');
