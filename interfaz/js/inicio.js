@@ -70,7 +70,10 @@ function login(){
             localStorage.setItem("token", res.data.message);
             window.location.href = "principal.html";
         }
-
+        else if(res.data.code === 201){
+            localStorage.setItem("token", res.data.message);
+            window.location.href = "../../interfazAdmon/html/principalA.html";
+        }
         else{
             var errorElement = document.getElementById('login-error');
             errorElement.textContent = "Usuario o contraseña incorrecto";

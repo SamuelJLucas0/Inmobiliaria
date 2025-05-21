@@ -1,12 +1,20 @@
 const mysql = require('mysql');
 const util = require('util');
 
+const {
+  DB_HOST,
+  DB_NAME,
+  DB_PASSWORD,
+  DB_PORT,
+  DB_USER
+} = require('../config.js'); 
+
 const pool = mysql.createPool({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'inmobiliaria'
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME,
+    port: DB_PORT
 });
 
 pool.query = util.promisify(pool.query);

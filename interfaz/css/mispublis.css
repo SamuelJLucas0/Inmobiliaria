@@ -1,0 +1,475 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow-x: visible; /* Impide que los elementos sobrepasen el contenedor */
+}
+
+.arriba {
+    background-color: #AE3E3E;
+    width: 100%;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+    overflow: visible; /* Impide que los elementos sobrepasen el contenedor */
+}
+
+#logo {
+    height: 120px;
+    width: auto;
+
+}
+
+#txt {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#buscador {
+    height: 35px;
+    border-radius: 20px;
+    border: 0;
+    padding-left: 20px;
+    font-size: 16px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    flex-grow: 1; /* Hace que el buscador ocupe el espacio restante */
+    max-width: 400px; /* Establece un tamaño máximo para el campo de búsqueda */
+}
+
+#foto-perfil {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.botones{
+    background-color: #FD5C5C;
+    text-align: center;
+    padding: 0px 0px;
+    font-size: 14px;
+    width: 100%;
+    height: 25px;
+    display: flex; /* <-- Esto es lo que hace que funcione el gap */
+    justify-content: center; /* Para centrar los botones */
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+
+}
+.botones-arriba{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 35px;
+    width: 230px;
+    color: white;
+    background-color: #00000000;
+    border: 0px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.botones-arriba:hover{
+    background-color: #AE3E3E;
+    color: white;
+}
+.container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top: 160px;
+}
+
+.izquierda {
+    background-image:linear-gradient(to left, #aca353, #fdf03ed2,#aca353);
+    
+    left: 20px;
+    width: 20%;
+    height: 1%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
+    
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.536);
+border: 2px solid  #6a6a6a;
+
+
+}
+.photo-u img{
+    width: 30%;
+    height: 30%;
+
+}
+.derecha {
+    position: relative;
+    left: 5%;
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.resultados{
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    padding: 50px;
+    background-color: #F3F2F2;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+}
+.resultado{
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    padding: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+.resultado:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.imagen {
+    flex: 0 0 40%;
+    display: flex;
+    border: 2px solid #8b8787;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* 👈 Para que no haya espacio extra */
+    overflow: hidden; /* 👈 Muy importante para que la imagen nunca se salga */
+    height: 100%; /* 👈 Hacer que tome el 100% de alto del contenedor */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 👈 Hace que la imagen se ajuste al tamaño sin salirse */
+    padding: 0; /* 👈 Asegurarse que no haya padding */
+    margin: 0; /* 👈 También quitar cualquier margen */
+    display: block; /* 👈 Elimina espacios extra debajo de la imagen */
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+
+.desc {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.boton-ver-mas {
+    align-self: flex-end;      /* 👈 derecha */
+    margin-top: auto;          /* 👈 abajo */
+    margin-right: 10px;
+    border-radius: 15px;
+    background-color: #AE3E3E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-ver-mas:hover {
+    background-color: #db6666;
+}
+
+.boton-inicio {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(194, 96, 96, 0.699);
+
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.boton-inicio a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.boton-inicio:hover {
+    transform: scale(1.1);
+    background: rgba(218, 24, 24, 0.89);
+
+}
+
+.boton-inicio a:hover {
+    color: #ffcc00;
+}
+
+.perfil-container {
+    position: relative;
+    display: inline-block;
+}
+
+#foto-perfil {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menu-desplegable {
+    display: none;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 10;
+    min-width: 160px;
+    text-align: left;
+}
+
+.menu-desplegable a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.menu-desplegable a:hover {
+    background-color: #f1f1f1;
+}
+
+.validar{
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+
+}
+#link{
+    width: 100px;
+    border-radius: 15px;
+    background-color: #AE3E3E;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#link:hover{
+    transform: scale(1.2);
+    background-color: #FD5C5C;
+}
+#sin-publis{
+    text-align: center;
+}
+.datos{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    overflow: visible; /* Impide que los elementos sobrepasen el contenedor */
+}
+
+.datos img{
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+
+#vacio{
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.acciones {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 1;
+}
+
+.btn-accion {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-accion:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.btn-accion.eliminar {
+    background-image: url('../img/bote.png'); /* Reemplaza con tu icono */
+    background-color: #ffcccc;
+}
+
+.btn-accion.actualizar {
+    background-image: url('../img/lapiz.png'); /* Reemplaza con tu icono */
+    background-color: #ccf1ff;
+}
+
+
+
+
+
+
+*{
+    font-family: 'Outfit';
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+
+}
+
+body{
+    overflow-y: hidden;
+    height: 1700px;
+    
+    background-image:linear-gradient(to bottom, #ffffff, #adadad);
+}
+
+
+.arriba {
+    background-image:linear-gradient(to bottom,#d24b4b, #a13a3a, #632424);
+    width: 100%;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+    position: fixed;
+    z-index: 99;
+    height: 100px;
+     /* Impide que los elementos sobrepasen el contenedor */
+}
+
+#logo {
+    width: 200px;
+}
+
+#txt {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+#buscador {
+    height: 35px;
+    border-radius: 20px;
+    border: 0;
+    padding-left: 20px;
+    font-size: 16px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    flex-grow: 1; /* Hace que el buscador ocupe el espacio restante */
+    max-width: 400px; /* Establece un tamaño máximo para el campo de búsqueda */
+}
+
+#foto-perfil {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.botones{
+    top: 100px;
+    position: fixed;
+    background-image:linear-gradient(to bottom,#7f4141, #d75353, #c74d4d);
+    
+    z-index: 99;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    display: flex; /* <-- Esto es lo que hace que funcione el gap */
+    justify-content: center; /* Para centrar los botones */
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+
+}
+.botones-arriba{
+    height: 25px;
+    margin-top: 5px;
+    width: 230px;
+    box-sizing: border-box;
+    color: white;
+    background-color: #d5040400;
+    border: 0px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.botones-arriba:hover{
+    background-color: #686868;
+    color: white;
+    border-radius: 15px;
+}
+
+
+.envoltorio-resultados {
+    top: 160px;
+    position: relative;
+    width: 80%;
+    background-image:linear-gradient(to bottom,  #811c1cbd,#ebebeb00);
+    padding: 70px 0px; /* margen interno */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+
+
+.arriba{
+    z-index: 9999;
+}
+.menu-desplegable {
+    
+    position: absolute;
+    top: 70px;
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería</title>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/publicar.css">
+</head>
+<body>
+    <div>
+        <div class="arriba">
+            <img src="../img/logo.png" alt="Logo de CASSAS" id="logo"> 
+            <h3 id="txt">Hola "Usuario" gracias por escoger CASSAS</h3>
+            <div class="perfil-container">
+                <img src="../img/user.jpg" alt="Foto de perfil" id="foto-perfil">
+                <div class="menu-desplegable" id="menu-desplegable">
+                    <a href="#">Mi perfil</a>
+                    <a href="validacionUser.html">Validar mi cuenta</a>
+                    <a href="publicar.html">Publica tu inmobiliaria</a>
+                    <a href="#">Mis publicaciones</a>
+                    <a href="inicio.html">Cerrar sesión</a>
+                </div>
+            </div>            
+        </div>
+        <div class="botones">
+            
+        </div>
+
+        <div class="container">
+            <div class="envoltorio-resultados">
+                <div class="resultados">
+                    <h2>A un paso de publicar tu inmobiliaria</h2>
+                    <form id="guardar" class="formulario">
+                        <div class="formulario-container">
+                            <div class="form-col izquierda">
+                                <label for="tipo">Tipo de propiedad:</label>
+                                <select id="tipo" name="tipo">
+                                    <option value="" disabled selected>Selecciona un tipo de propiedad</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Departamento">Departamento</option>
+                                    <option value="Terreno">Terreno</option>
+                                </select>
+                        
+                                <label for="estado">Estado:</label>
+                                <select id="estado" name="estado">
+                                    <option value="" disabled selected>Selecciona el Estado de ubicación</option>
+                                    <option value="">Selecciona un estado</option>
+                                    <option value="Aguascalientes">Aguascalientes</option>
+                                    <option value="Baja California">Baja California</option>
+                                    <option value="Baja California Sur">Baja California Sur</option>
+                                    <option value="Campeche">Campeche</option>
+                                    <option value="Chiapas">Chiapas</option>
+                                    <option value="Chihuahua">Chihuahua</option>
+                                    <option value="Ciudad de México">Ciudad de México</option>
+                                    <option value="Coahuila">Coahuila</option>
+                                    <option value="Colima">Colima</option>
+                                    <option value="Durango">Durango</option>
+                                    <option value="Estado de México">Estado de México</option>
+                                    <option value="Guanajuato">Guanajuato</option>
+                                    <option value="Guerrero">Guerrero</option>
+                                    <option value="Hidalgo">Hidalgo</option>
+                                    <option value="Jalisco">Jalisco</option>
+                                    <option value="Michoacán">Michoacán</option>
+                                    <option value="Morelos">Morelos</option>
+                                    <option value="Nayarit">Nayarit</option>
+                                    <option value="Nuevo León">Nuevo León</option>
+                                    <option value="Oaxaca">Oaxaca</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="Querétaro">Querétaro</option>
+                                    <option value="Quintana Roo">Quintana Roo</option>
+                                    <option value="San Luis Potosí">San Luis Potosí</option>
+                                    <option value="Sinaloa">Sinaloa</option>
+                                    <option value="Sonora">Sonora</option>
+                                    <option value="Tabasco">Tabasco</option>
+                                    <option value="Tamaulipas">Tamaulipas</option>
+                                    <option value="Tlaxcala">Tlaxcala</option>
+                                    <option value="Veracruz">Veracruz</option>
+                                    <option value="Yucatán">Yucatán</option>
+                                    <option value="Zacatecas">Zacatecas</option>
+                                </select>
+                        
+                                <label for="municipio">Municipio o Delegación:</label>
+                                <input type="text" id="municipio" name="municipio">
+                        
+                                <label for="habitaciones">Habitaciones:</label>
+                                <input type="number" id="habitaciones" name="habitaciones" min="0">
+                        
+                                <label for="banios">Baños:</label>
+                                <input type="number" id="banios" name="banios" min="0">
+                        
+                                <label for="estacionamiento">Estacionamiento:</label>
+                                <select id="estacionamiento" name="estacionamiento">
+                                    <option value="" disabled selected>Seleccione una opción</option>
+                                    <option value="Sí">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                        
+                                <label for="amueblado">Amueblado:</label>
+                                <select id="amueblado" name="amueblado">
+                                    <option value="" disabled selected>Seleccione una opción</option>
+                                    <option value="Sí">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                        
+                                <label for="tamano">Tamaño del terreno (m²):</label>
+                                <input type="text" id="tamano" name="tamano" min="0">
+                        
+                                <label for="precio">Precio (MXN):</label>
+                                <input type="text" id="precio" name="precio" min="0" step="any">
+                            </div>
+                            <div class="form-col derecha">
+                                <label for="descripcion">Descripción de la propiedad:</label>
+                                <textarea id="descripcion" name="descripcion" placeholder="Describe la propiedad aquí...Ejemplo: Hermosa casa en venta ubicada en una zona residencial tranquila y segura. Cuenta con 3 recámaras amplias, 2 baños completos, sala, comedor, cocina integral equipada, jardín trasero y cochera para 2 autos. Ideal para familias, cerca de escuelas, supermercados y parques. ¡Lista para habitarse!"></textarea>
+                            </div>
+                        </div>
+                        <div class="checkbox-container">
+                            <h2>Extras (Añade uno o más):</h2>
+                            <div class="checkbox-grid">
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Alberca" value="Alberca">
+                                    <label for="Alberca">Alberca</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Jacuzzi" value="Jacuzzi">
+                                    <label for="Jacuzzi">Jacuzzi</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Escuelas" value="Escuelas cercanas">
+                                    <label for="Escuelas">Escuelas cercanas</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Acceso-Controlado" value="Acceso controlado">
+                                    <label for="Acceso-Controlado">Acceso controlado</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Roof-Garden" value="Roof Garden">
+                                    <label for="Roof-Garden">Roof Garden</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Cuarto-TV" value="Cuarto de TV">
+                                    <label for="Cuarto-TV">Cuarto de TV</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Terraza" value="Terraza">
+                                    <label for="Terraza">Terraza</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Bodega" value="Bodega">
+                                    <label for="Bodega">Bodega</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Salon-Usos-Multiples" value="Salón de usos múltiples">
+                                    <label for="Salon-Usos-Multiples">Salón de usos múltiples</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Area-Juegos" value="Área de juegos infantiles">
+                                    <label for="Area-Juegos">Área de juegos infantiles</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Aire-Acondicionado" value="Aire acondicionado">
+                                    <label for="Aire-Acondicionado">Aire acondicionado</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Seguridad-Privada" value="Seguridad privada">
+                                    <label for="Seguridad-Privada">Seguridad privada</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Gimnasio" value="Gimnasio">
+                                    <label for="Gimnasio">Gimnasio</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Jardin-Privado" value="Jardín privado">
+                                    <label for="Jardin-Privado">Jardín privado</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Mercados" value="Mercados cercanos">
+                                    <label for="Mercados">Mercados cercanos</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Sistema-Riego" value="Sistema de riego">
+                                    <label for="Sistema-Riego">Sistema de riego</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Chimenea" value="Chimenea">
+                                    <label for="Chimenea">Chimenea</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Biblioteca" value="Biblioteca">
+                                    <label for="Biblioteca">Biblioteca</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Restaurantes" value="Restaurantes cercanos">
+                                    <label for="Restaurantes">Restaurantes cercanos</label>
+                                </div>
+                        
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="Paneles-Solares" value="Paneles solares">
+                                    <label for="Paneles-Solares">Paneles solares</label>
+                                </div>
+                        
+                            </div>
+                        </div> 
+                        <center><button id="btn" type="button">Actualizar</button></center>
+                    </form>                  
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="boton-inicio">
+        <a href="principal.html">⬅ Regresar al inicio</a>
+    </div>
+    <script>
+        const fotoPerfil = document.getElementById('foto-perfil');
+        const menu = document.getElementById('menu-desplegable');
+
+        fotoPerfil.addEventListener('click', () => {
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Cierra el menú si se hace clic fuera
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.perfil-container')) {
+                menu.style.display = 'none';
+            }
+        });
+
+        const fileInput = document.getElementById('avatar');
+        const fileNameSpan = document.getElementById('file-name-ine');
+    
+        // Escuchar el evento change en el input de tipo file
+        fileInput.addEventListener('change', function(event) {
+            const files = event.target.files;  // Obtener los archivos seleccionados
+            let fileNames = [];  // Array para almacenar los nombres de los archivos
+    
+            // Iterar sobre los archivos y agregar sus nombres al array
+            for (let i = 0; i < files.length; i++) {
+                fileNames.push(files[i].name);  // Agregar el nombre de cada archivo
+            }
+    
+            // Mostrar los nombres de los archivos en el span
+            if (fileNames.length > 0) {
+                fileNameSpan.textContent = fileNames.join(', ');  // Unir los nombres con coma
+            } else {
+                fileNameSpan.textContent = 'Ningún archivo seleccionado';  // Mensaje por defecto si no hay archivos
+            }
+        });
+        function formatNumberWithCommas(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        // Selecciona los elementos del DOM
+        const tamanoInput = document.getElementById('tamano');
+        const precioInput = document.getElementById('precio');
+        
+        // Función para actualizar el valor formateado
+        function updateFormattedValue(input, value) {
+            input.value = formatNumberWithCommas(value);
+        }
+        
+        // Escucha los cambios en el campo de tamaño
+        tamanoInput.addEventListener('input', function() {
+            let value = tamanoInput.value.replace(/,/g, ''); // Elimina las comas para poder trabajar con el valor numérico
+            if (value) {
+                updateFormattedValue(tamanoInput, parseInt(value));
+            }
+        });
+        
+        // Escucha los cambios en el campo de precio
+        precioInput.addEventListener('input', function() {
+            let value = precioInput.value.replace(/,/g, ''); // Elimina las comas para poder trabajar con el valor numérico
+            if (value) {
+                updateFormattedValue(precioInput, parseFloat(value));
+            }
+        });
+    </script>
+    <script src="../js/editar.js"></script>
+</body>
+</html>

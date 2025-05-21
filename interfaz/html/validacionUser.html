@@ -6,52 +6,134 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../css/validacionUser.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <title>Validacion</title>
 </head>
 <body>
-    <form id="verificacion-form" enctype="multipart/form-data">
-        <!-- Número de teléfono -->
-        <label for="phone">Teléfono:</label>
-        <input type="text" id="phone" name="phone" maxlength="10" required />
-    
-        <!-- Correo electrónico -->
-        <label for="mail">Correo electrónico:</label>
-        <input type="email" id="mail" name="mail" required />
-    
-        <!-- CURP -->
-        <label for="curp">CURP:</label>
-        <input type="text" id="curp" name="curp" maxlength="18"  required />
-    
-        <!-- RFC -->
-        <label for="rfc">RFC:</label>
-        <input type="text" id="rfc" name="rfc" maxlength="13" required />
-    
-        <!-- Imagen del INE -->
-        <label for="ine_photo">Fotografía del INE:</label>
-        <input type="file" id="ine_photo" name="ine_photo" accept="image/*" required />
-    
-        <!-- Fotografía del usuario -->
-        <label for="photo_user">Fotografía del usuario:</label>
-        <input type="file" id="photo_user" name="photo_user" accept="image/*" required />
-    
-        <button type="submit" id="enviar">Enviar verificación</button>
-      </form>
+    <div>
+        <div class="arriba">
+            <a href="principal.html"><img src="../img/logo.png" alt="Logo de CASSAS" id="logo"></a>
+            <h3 id="txt">Hola "Usuario" gracias por escoger CASSAS</h3>
+            <div class="perfil-container">
+                <img src="../img/user.jpg" alt="Foto de perfil" id="foto-perfil">
+                <div class="menu-desplegable" id="menu-desplegable">
+                    <a href="#">Mi perfil</a>
+                    <a href="validacionUser.html">Validar mi cuenta</a>
+                    <a href="publicar.html">Publica tu inmobiliaria</a>
+                    <a href="#">Mis publicaciones</a>
+                    <a href="inicio.html">Cerrar sesión</a>
+                </div>
+            </div>            
+        </div>
+        <div class="botones">
+            
+        </div>
 
+        <div class="container">
+            <div class="envoltorio-resultados">
+                <div class="resultados">
+                    <h2>Rellene el formulario para validar su cuenta</h2>
+                    <form id="verificacion-form" enctype="multipart/form-data">
+                        <div class="formulario-container">
+                          <!-- Columna izquierda: campos de texto -->
+                          <div class="form-col izquierda">
+                            <label for="phone">Teléfono:</label>
+                            <input type="text" id="phone" name="phone" maxlength="13" placeholder="Ex: 777-643-80-44" />
+                      
+                            <label for="mail">Correo electrónico:</label>
+                            <input type="email" id="mail" name="mail" placeholder="Ex: example@gmail.com" required />
+                      
+                            <label for="curp">CURP:</label>
+                            <input type="text" id="curp" name="curp" maxlength="18" placeholder="Ingrese su CURP" required />
+                      
+                            <label for="rfc">RFC:</label>
+                            <input type="text" id="rfc" name="rfc" maxlength="13" placeholder="Ingrese su RFC" required />
+                          </div>
+                      
+                          <!-- Columna derecha: subida de imágenes -->
+                          <div class="form-col derecha">
+                            <div class="upload-area">
+                                <img src="../img/nube.png" alt="nube">
+                                <label for="ine_photo">Fotografía del INE:</label>
+                                <input type="file" id="ine_photo" name="ine_photo" accept="image/*" required />
+                                <span id="file-name-ine">Ningún archivo seleccionado</span>
+                            </div>
+                      
+                            <div class="upload-area">
+                                <img src="../img/nube.png" alt="nube">
+                                <label for="photo_user">Fotografía del usuario:</label>
+                                <input type="file" id="photo_user" name="photo_user" accept="image/*" required />
+                                <span id="file-name-user">Ningún archivo seleccionado</span>
+                            </div>
+                          </div>
+                        </div>
+                      
+                        <!-- Botón debajo, centrado -->
+                        <div class="boton-centro">
+                          <button type="submit" id="enviar">Enviar verificación</button>
+                        </div>
+                      </form>                    
+                </div> 
+            </div>
+        </div>
+    </div> 
     <script>
-    // CURP y RFC en mayúsculas
-    ['curp', 'rfc'].forEach(id => {
-        const input = document.getElementById(id);
-        input.addEventListener('input', () => {
-        input.value = input.value.toUpperCase();
+        document.getElementById("ine_photo").addEventListener("change", function () {
+          const fileName = this.files[0]?.name || "Ningún archivo seleccionado";
+          document.getElementById("file-name-ine").textContent = fileName;
         });
-    });
+      
+        document.getElementById("photo_user").addEventListener("change", function () {
+          const fileName = this.files[0]?.name || "Ningún archivo seleccionado";
+          document.getElementById("file-name-user").textContent = fileName;
+        });
 
-    // Solo números en teléfono y máx 10 dígitos
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', () => {
-        phoneInput.value = phoneInput.value.replace(/\D/g, '');
-    });
-    </script>
+        ['curp', 'rfc'].forEach(id => {
+          const input = document.getElementById(id);
+          input.addEventListener('input', () => {
+          input.value = input.value.toUpperCase();
+          });
+      });
+  
+      // Solo números en teléfono y máx 10 dígitos
+      const phoneInput = document.getElementById('phone');
+      phoneInput.addEventListener('input', () => {
+        // Elimina todo lo que no sea dígito
+        let digits = phoneInput.value.replace(/\D/g, '');
+
+        // Limita a 10 caracteres
+        if (digits.length > 13) {
+          digits = digits.substring(0, 13);
+        }
+
+        // Formatea como XXX-XXX-XX-XX
+        let formatted = '';
+        if (digits.length > 0) formatted += digits.substring(0, 3);
+        if (digits.length > 3) formatted += '-' + digits.substring(3, 6);
+        if (digits.length > 6) formatted += '-' + digits.substring(6, 8);
+        if (digits.length > 8) formatted += '-' + digits.substring(8, 10);
+
+        phoneInput.value = formatted;
+      });
+
+      const fotoPerfil = document.getElementById('foto-perfil');
+      const menu = document.getElementById('menu-desplegable');
+
+      fotoPerfil.addEventListener('click', () => {
+          menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      });
+
+      // Cierra el menú si se hace clic fuera
+      document.addEventListener('click', function(event) {
+          if (!event.target.closest('.perfil-container')) {
+              menu.style.display = 'none';
+          }
+      });
+      </script>
+
 
     <script src="../js/validacionUser.js"></script>
 

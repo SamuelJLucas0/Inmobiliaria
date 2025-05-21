@@ -5,29 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalles de Publicación</title>
   <link rel="stylesheet" href="../css/detallesP.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
-  <div class="container">
-    <h1>Detalles de la Propiedad</h1>
-    <div class="detalle-card">
-      <div class="imagenes">
-        <img id="imagenPrincipal" src="" alt="Imagen de la propiedad">
-        <div id="galeria" class="galeria"></div>
-      </div>
-      <div class="info">
-        <p><strong>Estado:</strong> <span id="estado"></span></p>
-        <p><strong>Municipio:</strong> <span id="municipio"></span></p>
-        <p><strong>Habitaciones:</strong> <span id="habitaciones"></span></p>
-        <p><strong>Baños:</strong> <span id="banos"></span></p>
-        <p><strong>Estacionamientos:</strong> <span id="est"></span></p>
-        <p><strong>Amueblado:</strong> <span id="amueblado"></span></p>
-        <p><strong>Tamaño:</strong> <span id="tam"></span></p>
-        <p><strong>Precio:</strong> $<span id="precio"></span></p>
-        <p><strong>Descripción:</strong></p>
-        <p id="descripcion"></p>
-      </div>
+  <div>
+        <div class="arriba">
+            <a href="principalA.html"><img src="../img/logo.png" alt="Logo de CASSAS" id="logo"></a>
+            <h3 id="txt">Bienvenido de nuevo, Aministrador</h3>
+            <div class="perfil-container">
+                <img src="../img/user.jpg" alt="Foto de perfil" id="foto-perfil">
+  
+            </div>            
+        </div>
+        <div class="botones">
+        
+        </div>
+
+        <div class="container">
+            <div class="envoltorio-resultados">
+                <div class="resultados">
+                    <h2 id="tittle">Casa en Quéretaro, Juriquilla</h2>
+                    <div class="carrusel">
+                        <div class="imagenes" id="contenedor-imagenes">
+                          <!-- Las imágenes se insertarán aquí con JavaScript -->
+                        </div>
+                      
+                        <button id="anterior">&#10094;</button>
+                        <button id="siguiente">&#10095;</button>
+                    </div>
+                    <div id="puntos-carrusel"></div>
+                    <h2 id="precio">MXN$2,400,000</h2>
+                    <div class="caracteristicas-imagenes">
+                        <div class="caracteristica">
+                            <img src="../img/home.png" alt="Tipo de propiedad">
+                            <p id="casa">Casa</p>
+                            <span class="cajatexto">
+                                <span>Tipo de propiedad</span>
+                            </span>
+                        </div>
+                        <div class="caracteristica">
+                            <img src="../img/m2.png" alt="Metros cuadrados">
+                            <p id="metros">400m²</p>
+                            <span class="cajatexto">
+                                <span>Metros de la propiedad</span>
+                            </span>
+                        </div>
+                        <div class="caracteristica">
+                            <img src="../img/cuartos.png" alt="Cantidad de cuartos">
+                            <p id="cuartos">4</p>
+                            <span class="cajatexto">
+                                <span>Cuartos</span>
+                            </span>
+                        </div>
+                        <div class="caracteristica">
+                            <img src="../img/baño.png" alt="Cantidad de baños">
+                            <p id="baños">3</p>
+                            <span class="cajatexto">
+                                <span>Baños</span>
+                            </span>
+                        </div>
+                        <div class="caracteristica">
+                            <img src="../img/estacionamiento.png" alt="Si/No">
+                            <p id="estacionamiento">Si</p>
+                            <span class="cajatexto">
+                                <span>¿Estacionamiento?</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="contenedor-descripciones">
+                        <div class="izquierda-descripcion">
+                            <h2>Descripción</h2>
+                            <p id="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi rem repellendus dignissimos ipsum. Adipisci officiis voluptate impedit assumenda odio reiciendis sequi perferendis laudantium, pariatur molestias autem illo magnam sapiente quidem.</p>
+                            <h2>Informacion General</h2>
+                            <p><strong>Tipo de propiedad:</strong> Casa</p>
+                            <p><strong>Estado:</strong> Quéretaro</p>
+                            <p><strong>Municipio/Colonia:</strong> Juriquilla</p>
+                            <p><strong>Metros cuadrados de la propiedad:</strong> 400m²</p>
+
+                        </div>
+                        <div class="derecha-usuario">
+                            <h2>Datos del vendedor:</h2>
+                            <div class="info-vendedor">
+                                <div class="imagen-seller">
+                                    <button id="boton-perfil"><img src="juana.jpg" alt="Imagen de vendedor" id="foto-vendedor"></button>
+                                </div>
+                                <div class="datos-vendedor">
+                                    <p><strong>Nombre:</strong> Juana Pérez</p>
+                                    <p><strong>Teléfono:</strong> 55-1234-5678</p>
+                                    <p><strong>Correo:</strong> juana@example.com</p>
+                                </div>
+                            </div>
+                            <h2>◉Extras de la propiedad: </h2>
+                            <div class="extras">
+                                <p><strong>Caracteristicas Generales:</strong></p>
+                                <p>Escuelas cercanas✅</p>
+                                <p>Si mascotas✅</p>
+                                <p>Alberca✅</p>
+                                <p>Seguridad privada✅</p>
+                                <p>Jardin privado✅</p>
+                                <p>Aire acondicionado✅</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                  <div class="borrar">
+                    <center><button id="eliminar">Eliminar Publicación</button></center>
+                  </div>
+                </div> 
+            </div>
+        </div>
     </div>
-  </div>
+
+    
+    <div class="boton-inicio">
+        <a href="publicacionesA.html">⬅ Regresar</a>
+    </div>
   <script src="../js/detallesP.js"></script>
 </body>
 </html>

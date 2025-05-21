@@ -1,13 +1,48 @@
 window.onload = init;
 const input = document.getElementById("avatar");
 
-function init() {
+async function init() {
     if (!localStorage.getItem("token")) {
         window.location.href = "inicio.html";
         return;
     }
-
+    await ObtenerDatos();
+    verificarEstado();
     document.getElementById('btn').addEventListener('click', Subir);
+
+}
+function verificarEstado() {
+    const detallesU = localStorage.getItem("detalleUsuario");
+    detalles2 = JSON.parse(detallesU);
+    console.log(detalles2.status);
+    menu.innerHTML = "";
+    if(detalles2.status == "Validado"){
+        menu.innerHTML += `
+            <a href="miPerfil.html">Mi perfil</a>
+            <a href="publicar.html">Publica tu inmobiliaria</a>
+            <a href="mispublis.html">Mis publicaciones</a>
+            <a href="inicio.html">Cerrar sesión</a>
+        `;
+    }else{
+        menu.innerHTML += `
+            <a href="miPerfil.html">Mi perfil</a>
+            <a href="validacionUser.html">Validar mi cuenta</a>
+            <a href="inicio.html">Cerrar sesión</a>
+        `;
+    }
+}
+
+function ObtenerDatos() {
+    const data = JSON.parse(localStorage.getItem("detalleUsuario"));  
+    const fotoPerfil = document.getElementById('foto-perfil');
+    const saludo = document.getElementById("txt");
+    saludo.textContent = `Hola ${data.name}, gracias por escoger CASSAS`;
+    if (data.photo_user) {
+        fotoPerfil.src = `http://localhost:3000${data.photo_user}`;
+    } else {
+        fotoPerfil.src = "../img/user.jpg";
+        console.log("Usuario sin validación. No se muestra imagen personalizada.");
+    }
 }
 
 const tipoPropiedad = document.getElementById("tipo");

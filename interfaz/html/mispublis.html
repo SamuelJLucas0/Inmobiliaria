@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/mispublis.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="arriba">
+            <a href="principal.html"><img src="../img/logo.png" alt="Logo de CASSAS" id="logo"></a>
+            <input type="text" placeholder="Buscar en CASSASQRO.COM" id="buscador">
+            <h3 id="txt">Hola "Usuario" gracias por escoger CASSAS</h3>
+            <div class="perfil-container">
+                <img src="../img/user.jpg" alt="Foto de perfil" id="foto-perfil">
+                <div class="menu-desplegable" id="menu-desplegable">
+                    <a href="#">Mi perfil</a>
+                    <a href="validacionUser.html">Validar mi cuenta</a>
+                    <a href="publicar.html">Publica tu inmobiliaria</a>
+                    <a href="#">Mis publicaciones</a>
+                    <a href="inicio.html">Cerrar sesión</a>
+                </div>
+            </div>        
+        </div>
+        <div class="botones">
+            
+        </div>
+
+        <div class="container">
+            <div class="izquierda">
+                <div class="datos">
+                    <center><h2>Sobre mi</h2><br></center>
+                    <center><img src="../img/user.jpg" id ="mi-foto" alt="Foto"></center>
+                    <div class="input-box">
+                        <p id="nombre"><strong>Nombre: </strong>Juana Perez</p>
+                        <i class="bx bxs-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <p id="telefono"><strong>Telefono: </strong>777-643-80-44</p>
+                        <i class="bx bxs-phone"></i>
+                    </div>
+                    <div class="input-box">
+                        <p id="correo"><strong>Correo: </strong>samueljuarezlucas.90@gmail.com</p>
+                        <i class="bx bxs-envelope"></i>
+                    </div>
+                
+                </div>
+                
+
+            </div>
+            <div class="derecha">
+                
+                <div class="resultados">
+                    <h2 id="mensaje"></h2>
+                    <div class="vacio" style="display: block;">
+                        <h2 id="sin-publis">Sin publicaciones aún</h2><br><br>
+                        <img id="img-vacio" src="../img/vacio.png" alt="Vacio">
+                    </div>  
+                </div>     
+            </div>
+        </div>
+    </div> 
+    <script>
+        const fotoPerfil = document.getElementById('foto-perfil');
+        const menu = document.getElementById('menu-desplegable');
+
+        fotoPerfil.addEventListener('click', () => {
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Cierra el menú si se hace clic fuera
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.perfil-container')) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="../js/mispublis.js"></script>
+    
+</body>
+</html>

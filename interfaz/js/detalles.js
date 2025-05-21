@@ -3,20 +3,55 @@ window.onload = init;
 let index = 0; // Mueve la declaración de 'index' fuera para que sea accesible globalmente
 const imagenes = document.querySelector('.imagenes'); // Declara la variable 'imagenes' aquí para que sea global
 const detallePubli = JSON.parse(localStorage.getItem('detallePubli'));
-
-function init() {
-
+const botonVendedor = document.getElementById('boton-perfil');
+botonVendedor.addEventListener('click', () => {
+    window.location.href = 'perfil.html';
+})
+async function init() {
     if (!localStorage.getItem("token")) {
         window.location.href = "inicio.html";
         return;
     }
-    ObtenerDatosSeller(detallePubli.id_user, cargarDetalles); // Cambia 'id_usuario' por el nombre correcto del campo en tu objeto
-    
+    ObtenerDatosSeller(detallePubli.id_user, cargarDetalles); 
+    await ObtenerDatos();
+    verificarEstado();
+}
+function verificarEstado() {
+    const detallesU = localStorage.getItem("detalleUsuario");
+    detalles2 = JSON.parse(detallesU);
+    console.log(detalles2.status);
+    menu.innerHTML = "";
+    if(detalles2.status == "Validado"){
+        menu.innerHTML += `
+            <a href="miPerfil.html">Mi perfil</a>
+            <a href="publicar.html">Publica tu inmobiliaria</a>
+            <a href="mispublis.html">Mis publicaciones</a>
+            <a href="inicio.html">Cerrar sesión</a>
+        `;
+    }else{
+        menu.innerHTML += `
+            <a href="miPerfil.html">Mi perfil</a>
+            <a href="validacionUser.html">Validar mi cuenta</a>
+            <a href="inicio.html">Cerrar sesión</a>
+        `;
+    }
 }
 
+function ObtenerDatos() {
+    const data = JSON.parse(localStorage.getItem("detalleUsuario"));  
+    const fotoPerfil = document.getElementById('foto-perfil');
+    const saludo = document.getElementById("txt");
+    saludo.textContent = `Hola ${data.name}, gracias por escoger CASSAS`;
+    if (data.photo_user) {
+        fotoPerfil.src = `http://localhost:3000${data.photo_user}`;
+    } else {
+        fotoPerfil.src = "../img/user.jpg";
+        console.log("Usuario sin validación. No se muestra imagen personalizada.");
+    }
+}
 
 function cargarDetalles() {
-    const detallesUser = JSON.parse(localStorage.getItem('detalleUsuario'));
+    const detallesUser = JSON.parse(localStorage.getItem('detalleSeller'));
 
     const contenedor = document.getElementById('contenedor-imagenes');
     const puntosContenedor = document.getElementById('puntos-carrusel');
@@ -38,8 +73,25 @@ function cargarDetalles() {
     document.getElementById('cuartos').textContent = `${detallePubli.HAB}`;
     document.getElementById('baños').textContent = `${detallePubli.BAN}`;
     document.getElementById('estacionamiento').textContent = `${detallePubli.EST}`;
-    document.getElementById('descripcion').textContent = `${detallePubli.DES}`;
+    // Modificar descripción principal
+    document.getElementById('descripcion').textContent = detallePubli.DES;
+    console.log(detallePubli.DES);
+    // Modificar información general
+    const infoGeneral = document.querySelector('.izquierda-descripcion');
 
+    // Reemplazar todo el contenido bajo "Informacion General"
+    infoGeneral.innerHTML = `
+        <h2>Descripción</h2>
+        <p id="descripcion">${detallePubli.DES}</p>
+        <h2>Información General</h2>
+        <p><strong>Tipo de propiedad:</strong> ${detallePubli.PRO}</p>
+        <p><strong>Estado:</strong> ${detallePubli.ESTADO}</p>
+        <p><strong>Municipio/Colonia:</strong> ${detallePubli.MUN}</p>
+        <p><strong>Metros cuadrados de la propiedad:</strong> ${detallePubli.TAM} m²</p>
+        <p><strong>Fecha de la publicación:</strong> ${detallePubli.fecha_subida}</p>
+
+    `;
+    console.log(detallePubli.fecha_subida);
     // Datos del vendedor
     const fotoVendedor = document.getElementById('foto-vendedor');
     fotoVendedor.src = `http://localhost:3000${detallesUser.photo_user}`; // Ruta completa de la imagen
@@ -102,7 +154,7 @@ function ObtenerDatosSeller(id, callback) {
     .then(response => {
         const usuario = response.data;
         console.log(usuario);
-        localStorage.setItem('detalleUsuario', JSON.stringify(usuario));
+        localStorage.setItem('detalleSeller', JSON.stringify(usuario));
         callback(); // Llamamos al callback cuando los datos están listos
     })
     .catch(error => {
