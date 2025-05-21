@@ -15,10 +15,6 @@ app.use(morgan('dev'));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-// Sirve los archivos estáticos (HTML, CSS, JS, imágenes, etc.)
-app.use(express.static(path.join(__dirname, 'interfaz')));
-
-// Sirve index.html desde la raíz del proyecto
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
